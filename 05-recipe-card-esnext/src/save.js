@@ -12,7 +12,7 @@ const Save = ( props ) => {
 	const blockProps = useBlockProps.save();
 	return (
 		<div { ...blockProps }>
-			<RichText.Content tagName="h2" value={ title } />
+			<RichText.Content tagName="h1" value={ title } />
 
 			{ mediaURL && (
 				<img
@@ -28,6 +28,7 @@ const Save = ( props ) => {
 				className="ingredients"
 				value={ ingredients }
 			/>
+			
 
 			<h3>{ __( 'Instructions', 'gutenberg-examples' ) }</h3>
 			<RichText.Content

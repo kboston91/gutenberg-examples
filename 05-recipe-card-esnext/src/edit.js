@@ -25,6 +25,7 @@ const Edit = ( props ) => {
 	};
 	const onChangeIngredients = ( value ) => {
 		setAttributes( { ingredients: value } );
+		console.log(getFoodNutrition(value));
 	};
 
 	const onChangeInstructions = ( value ) => {
@@ -34,7 +35,7 @@ const Edit = ( props ) => {
 	return (
 		<div { ...blockProps }>
 			<RichText
-				tagName="h2"
+				tagName="h1"
 				placeholder={ __(
 					'Write Recipe title…',
 					'gutenberg-examples'
@@ -95,6 +96,7 @@ const Edit = ( props ) => {
 			/>
 		</div>
 	);
+
 };
 
 export default Edit;

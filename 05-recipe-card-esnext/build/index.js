@@ -27,6 +27,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Edit = props => {
+
+  function getFoodNutrition(value){
+    const initials = {
+    calories: 0,
+    carbs: 0,
+    fat: 0,
+    }
+    
+    const caloriesData = {
+    egg: {calories: 105, carbs: 42, fat:1},
+    milk: {calories: 52, carbs: 33, fat:4},
+    butter: {calories: 237, carbs: 2, fat:21},
+    flour: {calories: 34, carbs: 83, fat:6},
+    cream: {calories: 223, carbs: 3, fat:44}
+    }
+    // Loop over the caloriesData keys
+    let calories, carbs, fat = Object.keys(caloriesData)
+    // filter keys that are in the value (entries)
+    .filter(key => value.filter(li=>li.props.children[0] ===
+    
+    key).length)
+    
+    // Calculate sum of calories, carbs, fat
+    .reduce((res, key) => ({
+    calories: res.carbs + caloriesData[key].calories,
+    carbs: res.calories + caloriesData[key].carbs,
+    fat: res.fat + caloriesData[key].fat
+    }), initials);
+    
+    return "Calories:" + {calories} + "kcal - Carbs:" + {carbs} + "gr - fat:" + {fat} + "gr";
+    };
   const {
     attributes: {
       title,
@@ -56,6 +87,7 @@ const Edit = props => {
     setAttributes({
       ingredients: value
     });
+    console.log(getFoodNutrition(value));
   };
 
   const onChangeInstructions = value => {
@@ -269,7 +301,7 @@ module.exports = window["wp"]["i18n"];
   \********************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json","apiVersion":2,"name":"gutenberg-examples/example-05-recipe-card-esnext","title":"Example: Recipe Card (ESNext)","icon":"index-card","category":"layout","attributes":{"title":{"type":"string","source":"html","selector":"h1"},"mediaID":{"type":"number"},"mediaURL":{"type":"string","source":"attribute","selector":"img","attribute":"src"},"ingredients":{"type":"string","source":"html","selector":".ingredients"},"instructions":{"type":"string","source":"html","selector":".steps"}},"example":{"attributes":{"title":"Chocolate Chip Cookies","mediaID":1,"mediaURL":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2ChocolateChipCookies.jpg/320px-2ChocolateChipCookies.jpg","ingredients":[{"type":"li","props":{"children":["flour"]}},{"type":"li","props":{"children":["sugar"]}},{"type":"li","props":{"children":["chocolate"]}},{"type":"li","props":{"children":["💖"]}}],"instructions":[{"type":"p","props":{"children":["Mix, Bake, Enjoy!"]}}]}},"editorScript":"file:./build/index.js","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json","apiVersion":2,"name":"gutenberg-examples/example-05-recipe-card-esnext","title":"Example: Recipe Card (ESNext)","icon":"index-card","category":"layout","attributes":{"title":{"type":"string","source":"html","selector":"h2"},"mediaID":{"type":"number"},"mediaURL":{"type":"string","source":"attribute","selector":"img","attribute":"src"},"ingredients":{"type":"string","source":"html","selector":".ingredients"},"instructions":{"type":"string","source":"html","selector":".steps"}},"example":{"attributes":{"title":"Chocolate Chip Cookies","mediaID":1,"mediaURL":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2ChocolateChipCookies.jpg/320px-2ChocolateChipCookies.jpg","ingredients":[{"type":"li","props":{"children":["flour"]}},{"type":"li","props":{"children":["sugar"]}},{"type":"li","props":{"children":["chocolate"]}},{"type":"li","props":{"children":["💖"]}}],"instructions":[{"type":"p","props":{"children":["Mix, Bake, Enjoy!"]}}]}},"editorScript":"file:./build/index.js","style":"file:./build/style-index.css"}');
 
 /***/ })
 
