@@ -11,6 +11,39 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
+	function getFoodNutrition(value){
+    const initials = {
+    calories: 0,
+    carbs: 0,
+    fat: 0,
+    }
+    
+    const caloriesData = {
+    egg: {calories: 105, carbs: 42, fat:1},
+    milk: {calories: 52, carbs: 33, fat:4},
+    butter: {calories: 237, carbs: 2, fat:21},
+    flour: {calories: 34, carbs: 83, fat:6},
+    cream: {calories: 223, carbs: 3, fat:44}
+    }
+    // Loop over the caloriesData keys
+    let calories, carbs, fat = Object.keys(caloriesData)
+    // filter keys that are in the value (entries)
+    .filter(key => value.filter(li=>li.props.children[0] ===
+    
+    key).length)
+    
+    // Calculate sum of calories, carbs, fat
+    .reduce((res, key) => ({
+    calories: res.carbs + caloriesData[key].calories,
+    carbs: res.calories + caloriesData[key].carbs,
+    fat: res.fat + caloriesData[key].fat
+    }), initials);
+
+		console.log('Debugging')
+    
+    return "Calories:" + {calories} + "kcal - Carbs:" + {carbs} + "gr - fat:" + {fat} + "gr";
+    };
+
 	const blockProps = useBlockProps();
 
 	const onChangeTitle = ( value ) => {
@@ -31,6 +64,8 @@ const Edit = ( props ) => {
 	const onChangeInstructions = ( value ) => {
 		setAttributes( { instructions: value } );
 	};
+
+
 
 	return (
 		<div { ...blockProps }>

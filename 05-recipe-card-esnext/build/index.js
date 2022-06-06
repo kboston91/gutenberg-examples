@@ -27,38 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Edit = props => {
-
-  function getFoodNutrition(value){
-    const initials = {
-    calories: 0,
-    carbs: 0,
-    fat: 0,
-    }
-    
-    const caloriesData = {
-    egg: {calories: 105, carbs: 42, fat:1},
-    milk: {calories: 52, carbs: 33, fat:4},
-    butter: {calories: 237, carbs: 2, fat:21},
-    flour: {calories: 34, carbs: 83, fat:6},
-    cream: {calories: 223, carbs: 3, fat:44},
-    cauliflower: {calories: 103, carbs: 2, fat:0},
-    }
-    // Loop over the caloriesData keys
-    let calories, carbs, fat = Object.keys(caloriesData)
-    // filter keys that are in the value (entries)
-    .filter(key => value.filter(li=>li.props.children[0] ===
-    
-    key).length)
-    
-    // Calculate sum of calories, carbs, fat
-    .reduce((res, key) => ({
-    calories: res.carbs + caloriesData[key].calories,
-    carbs: res.calories + caloriesData[key].carbs,
-    fat: res.fat + caloriesData[key].fat
-    }), initials);
-    
-    return "Calories:" + {calories} + "kcal - Carbs:" + {carbs} + "gr - fat:" + {fat} + "gr";
-    };
   const {
     attributes: {
       title,
@@ -69,6 +37,61 @@ const Edit = props => {
     },
     setAttributes
   } = props;
+
+  function getFoodNutrition(value) {
+    const initials = {
+      calories: 0,
+      carbs: 0,
+      fat: 0
+    };
+    const caloriesData = {
+      egg: {
+        calories: 105,
+        carbs: 42,
+        fat: 1
+      },
+      milk: {
+        calories: 52,
+        carbs: 33,
+        fat: 4
+      },
+      butter: {
+        calories: 237,
+        carbs: 2,
+        fat: 21
+      },
+      flour: {
+        calories: 34,
+        carbs: 83,
+        fat: 6
+      },
+      cream: {
+        calories: 223,
+        carbs: 3,
+        fat: 44
+      }
+    }; // Loop over the caloriesData keys
+
+    let calories,
+        carbs,
+        fat = Object.keys(caloriesData) // filter keys that are in the value (entries)
+    .filter(key => value.filter(li => li.props.children[0] === key).length) // Calculate sum of calories, carbs, fat
+    .reduce((res, key) => ({
+      calories: res.carbs + caloriesData[key].calories,
+      carbs: res.calories + caloriesData[key].carbs,
+      fat: res.fat + caloriesData[key].fat
+    }), initials);
+    console.log('Debugging');
+    return "Calories:" + {
+      calories
+    } + "kcal - Carbs:" + {
+      carbs
+    } + "gr - fat:" + {
+      fat
+    } + "gr";
+  }
+
+  ;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
 
   const onChangeTitle = value => {
@@ -219,7 +242,7 @@ const Save = props => {
     className: "recipe-image",
     src: mediaURL,
     alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Recipe Image', 'gutenberg-examples')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ingredients', 'gutenberg-examples')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ingredients', 'gutenberg-examples')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Prep Time Cook Time Total Time"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), "15 minutes 15 minutes 30 minutes"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
     tagName: "ul",
     className: "ingredients",
     value: ingredients
