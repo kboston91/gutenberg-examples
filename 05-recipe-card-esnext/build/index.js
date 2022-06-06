@@ -40,7 +40,8 @@ const Edit = props => {
     milk: {calories: 52, carbs: 33, fat:4},
     butter: {calories: 237, carbs: 2, fat:21},
     flour: {calories: 34, carbs: 83, fat:6},
-    cream: {calories: 223, carbs: 3, fat:44}
+    cream: {calories: 223, carbs: 3, fat:44},
+    cauliflower: {calories: 103, carbs: 2, fat:0},
     }
     // Loop over the caloriesData keys
     let calories, carbs, fat = Object.keys(caloriesData)
